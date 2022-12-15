@@ -1,6 +1,6 @@
 const express = require("express")
 const { connection } = require("./Config/db")
-const { addProductsController, getProductsController } = require("./Controllers/products.controller")
+const { addProductsController, getProductsController, deleteProd } = require("./Controllers/products.controller")
 const cors = require("cors")
 const { bookmarkController, getBookmarks } = require("./Controllers/bookmark.controller")
 require("dotenv").config()
@@ -21,6 +21,8 @@ app.get("/products" , getProductsController)
 app.post("/addtobookmarks" , bookmarkController)
 
 app.get("/bookmarks",getBookmarks)
+
+app.delete("/deleteProd/:id" , deleteProd)
 
 app.listen(PORT, async()=>{
     try{

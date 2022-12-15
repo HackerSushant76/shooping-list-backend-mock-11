@@ -12,4 +12,10 @@ const getProductsController = async (req,res)=>{
     res.send(list)
 }
 
-module.exports = {addProductsController,getProductsController}
+const deleteProd = async(req,res) => {
+    const {id} = req.params
+    await ListItem.deleteOne({_id: id})
+    res.send("deletion successful")
+}
+
+module.exports = {addProductsController,getProductsController,deleteProd}
